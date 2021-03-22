@@ -1,9 +1,14 @@
 var fs = require('fs');
-var http = require('http');
+var http = require('https');
 var url = require('url');
 
+// Get ssl certificates
+const options = {
+	key: fs.readFileSync("/etc/letsencrypt/live/snkstream.com/privkey.pem"),
+	cert: fs.readFileSync("/etc/letsencrypt/live/snkstream.com/cert.pem")
+};
 
-http.createServer(function (req, res) {
+https.createServer(options, function (req, res) {
 	// Get pathname
 	var path = url.parse(req.url, true).pathname;
 	
@@ -43,4 +48,4 @@ http.createServer(function (req, res) {
 		res.write(data);
 		return res.end();
 	})
-}).listen(8080);
+}).listen(4242);
