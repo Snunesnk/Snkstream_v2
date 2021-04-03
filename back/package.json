@@ -1,0 +1,12 @@
+{
+  "name": "webserver",
+  "version": "1.0.0",
+  "description": "Webserver for snkstream.com",
+  "main": "webserv.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon webserv.js"
+  },
+  "author": "snunes",
+  "license": "ISC"
+}
