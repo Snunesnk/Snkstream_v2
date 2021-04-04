@@ -1,30 +1,10 @@
 <template>
-  <v-app>
-    <div class="d-flex justify-center"><h1 id="addTodo">Add ToDo</h1></div>
-    <div class="d-flex justify-center">
-      <v-col cols="6" style="margin: 0px auto">
-        <v-text-field v-model="newTodo" label="Add Todo" solo></v-text-field>
-      </v-col>
-    </div>
-    <div class="d-flex justify-center">
-      <v-btn @click="addToDo()" color="primary">Add ToDo</v-btn>
-    </div>
-  </v-app>
+<div class="position-relative" style="height: 100vh">
+  <div class="position-absolute top-50 start-50 translate-middle" id="title" >
+    <h1>SNKSTREAM</h1>
+  </div>
+</div>
 </template>
-<script>
-import axios from "axios";
-export default {
-  data: () => ({
-    newToDo: "test",
-  }),
-  methods: {
-    addToDo() {
-      axios
-        .post("/api/todo/add", { todo: this.newTodo })
-        .then((response) => {
-          alert(response.data);
-        });
-    },
-  },
-};
-</script>
+
+<style>
+</style>
