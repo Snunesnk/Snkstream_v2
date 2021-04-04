@@ -37,6 +37,10 @@ a {
     letter-spacing: 1px;
 }
 
+a:hover {
+    color: white;
+}
+
 
 /* Fifth Button */
 
