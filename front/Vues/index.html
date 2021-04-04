@@ -25,9 +25,23 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 	<link rel="manifest" href="/site.webmanifest">
+
+	<!--Videojs-->
+	<link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
 </head>
 
 <body>
+    <noscript>
+      <strong>We're sorry but SNKSTREAM doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+	<!-- <video class="video-js"> -->
+	<video id="videoPlayer" width="650" controls muted="muted" autoplay>
+		<source
+			src="/Movies/Zack.Snyders.Justice.League.2021.REPACK.HDR.2160p.WEB.H265-NAISU/e511ef3bb0ba9e66e1f1fbf9141056cc.mp4"
+			type="video/mp4" />
+	</video>
+
 	<div class="container">
 		<div class="row">
 			<div id="title">
@@ -55,14 +69,12 @@
 				<i class="fas fa-plus btn_icon"></i>
 				<a href="http://snkstream.com/sonarr/addseries" target="_blank">Séries</a>
 			</div>
-			</a>
 
 			<div class="button-5 button">
 				<div class="translate"></div>
 				<i class="fas fa-plus btn_icon"></i>
 				<a href="http://snkstream.com/radarr/add/new" target="_blank">Films</a>
 			</div>
-			</a>
 		</div>
 	</div>
 
@@ -73,6 +85,9 @@
 
 	<!--Site script-->
 	<script src="index.js"></script>
+
+	<!--Videojs-->
+	<script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
 </body>
 
 </html>

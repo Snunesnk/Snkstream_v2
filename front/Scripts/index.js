@@ -7,3 +7,13 @@ function GoToSonarr() {
 function GoToJellyfin() {
     window.open("https://snkstream.com/jellyfin");
 }
+
+const Counter = {
+    data() {
+      return {
+        counter: 0
+      }
+    }
+  }
+  
+  Vue.createApp(Counter).mount('#counter')  

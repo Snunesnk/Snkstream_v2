@@ -34,6 +34,8 @@ https.createServer(options, app).listen(port);
 app.get("/", function (req, res) {
 	var file = front + "Vues/index.html";
 
+	console.log("Got a request on root.");
+
 	// Read file, and return it
 	fs.readFile(file, function (err, data) {
 		// Prevent potential errors
@@ -143,7 +145,7 @@ app.get("/*.mp4", function (req, res) {
    
 	 // Parse Range
 	 // Example: "bytes=32324-"
-	 const CHUNK_SIZE = 10 ** 6; // 1MB
+	 const CHUNK_SIZE = 9 ** 6; // 1MB
 	 const start = Number(range.replace(/\D/g, ""));
 	 const end = Math.min(start + CHUNK_SIZE, videoSize - 1);
    
@@ -165,3 +167,16 @@ app.get("/*.mp4", function (req, res) {
 	 // Stream the video chunk to the client
 	 videoStream.pipe(res);
 });
+
+app.post("/todo/add", function (req, res) {
+	console.log("test, need to add a todo.");
+	res.send("It works !");
+})
+
+app.post("/api/*", function (req, res) {
+	var path = url.parse(req.url, true).pathname;
+
+	console.log("got a request on path: " + path);
+	res.write("Coucou !");
+	res.end();
+})
