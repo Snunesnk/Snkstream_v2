@@ -71,9 +71,6 @@ a:hover {
 }
 
 @media screen and (min-width:1000px) {
-    h1 {
-        font-size: 4.2em;
-    }
     #container {
         width: 50%;
     }
