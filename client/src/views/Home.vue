@@ -1,6 +1,7 @@
 <template>
   <div>
     <div id="first-row">
+      <h2>En ce moment</h2>
       <vueper-slides
         class="no-shadow ex--center-mode"
         :visible-slides="7"
@@ -15,40 +16,26 @@
           :title="slide.title"
         >
           <template v-slot:content>
-            <div class="card">
-              <img
-                class="card-img-top"
-                :src="slide.img_src"
-                alt="Card image cap"
-                loaded="lazy"
-              />
-              <div class="card-body">
-                <p class="card-text">{{ slide.content }}</p>
-              </div>
-            </div>
+            <Card
+              :title="slide.title"
+              :img_src="slide.img_src"
+              :content="slide.content"
+            />
           </template>
         </vueper-slide>
       </vueper-slides>
     </div>
-
-    <hr />
-
-    <Carousel id="popular" title="Populaire:" />
-
-    <hr />
-
-    <Carousel id="new_aded" title="Ajouté récemment:" />
   </div>
 </template>
 
 <script>
-import Carousel from "../components/Carousel.vue";
 import { VueperSlides, VueperSlide } from "vueperslides";
+import Card from "../components/Card";
 import "vueperslides/dist/vueperslides.css";
 import axios from "axios";
 
 export default {
-  components: { Carousel, VueperSlides, VueperSlide },
+  components: { VueperSlides, VueperSlide, Card },
   name: "Home",
   data() {
     return { slides: [] };
@@ -79,14 +66,9 @@ export default {
   margin-top: 42px;
 }
 
-.ex--center-mode {
-  width: 90vw;
-  max-width: 100%;
-  margin: auto;
-}
-
-.card-img-top {
-  margin-top: 42%;
+h2 {
+  margin-left: 3%;
+  color: rgb(232, 230, 227);
 }
 </style>
 
@@ -102,18 +84,14 @@ export default {
   align-items: center;
 }
 
-.card {
-  background-color: inherit;
-  color: #bfc0c0;
-}
-
 .vueperslides__bullets,
 .vueperslides__bullets--outside {
   color: #950740;
 }
-.card-text {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-height: 142px;
+
+.ex--center-mode {
+  width: 90vw;
+  max-width: 100%;
+  margin: auto;
 }
 </style>
