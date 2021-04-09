@@ -18,7 +18,7 @@
             <div class="card">
               <img
                 class="card-img-top"
-                src="https://image.tmdb.org/t/p/original/pgqgaUx1cJb5oZQQ5v0tNARCeBp.jpg"
+                :src="slide.img_src"
                 alt="Card image cap"
                 loaded="lazy"
               />
@@ -45,27 +45,32 @@
 import Carousel from "../components/Carousel.vue";
 import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";
-import axios from "../plugins/axios";
+import axios from "axios";
 
 export default {
   components: { Carousel, VueperSlides, VueperSlide },
   name: "Home",
-  computed: {
-    slides() {
-      var test = [];
-
-      for (var i = 0; i < 10; i++) {
-        test.push({ title: i.toString(), content: i });
-      }
-
-      return test;
-    },
+  data() {
+    return { slides: [] };
   },
-  mounted() {
+  created() {
+    const poster_base = "https://image.tmdb.org/t/p/w500";
+
     axios
-      .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-      .then(response => (console.log(response)));
-  }
+      .get(
+        "https://api.themoviedb.org/3/movie/popular?api_key=713bca275fe17e1fa35d05a2984618ef&language=fr-FR&page=1"
+      )
+      .then((response) => {
+        for (var res in response.data.results) {
+          this.slides.push({
+            title: response.data.results[res].title,
+            img_src: poster_base + response.data.results[res].poster_path,
+            content: response.data.results[res].overview,
+          });
+          console.log(response.data.results[res]);
+        }
+      });
+  },
 };
 </script>
 
@@ -105,5 +110,10 @@ export default {
 .vueperslides__bullets,
 .vueperslides__bullets--outside {
   color: #950740;
+}
+.card-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 142px;
 }
 </style>
