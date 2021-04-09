@@ -83,7 +83,7 @@ export default {
 
 <style scoped>
 #nav {
-  background-color: #6f2232;
+  background-color: #810d1d;
   color: rgb(232, 230, 227);
   font-size: 1.5rem;
 }
@@ -93,14 +93,14 @@ export default {
 }
 
 #nav-btn {
-  border-color: #1a1a1d;
+  border-color: rgb(24, 26, 27);
   font-size: 1.2rem;
 }
 
 #nav-btn:hover,
 li > a:hover {
-  background-color: #1a1a1d;
-  border-color: #1a1a1d;
+  background-color: rgb(24, 26, 27);
+  border-color: rgb(24, 26, 27);
   color: white;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -167,12 +167,12 @@ li {
 }
 
 #title::before {
-  background: linear-gradient(to right, rgba(240, 240, 240, 0), #1a1a1d);
+  background: linear-gradient(to right, rgba(240, 240, 240, 0), rgb(24, 26, 27));
   margin-right: 9px;
 }
 
 #title::after {
-  background: linear-gradient(to left, rgba(240, 240, 240, 0), #1a1a1d);
+  background: linear-gradient(to left, rgba(240, 240, 240, 0), rgb(24, 26, 27));
   margin-left: 9px;
 }
 

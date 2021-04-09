@@ -2,28 +2,34 @@
   <div>
     <div id="first-row">
       <h2>En ce moment</h2>
-      <vueper-slides
-        class="no-shadow ex--center-mode"
-        :visible-slides="7"
-        :gap="3"
-        :dragging-distance="70"
-        :arrows-outside="true"
-        slide-multiple
-      >
-        <vueper-slide
-          v-for="(slide, i) in slides"
-          :key="i"
-          :title="slide.title"
-        >
-          <template v-slot:content>
-            <Card
-              :title="slide.title"
-              :img_src="slide.img_src"
-              :content="slide.content"
-            />
-          </template>
-        </vueper-slide>
-      </vueper-slides>
+      <div class="row">
+        <div class="col-10 ml-7-6">
+          <vueper-slides
+            class="no-shadow ex--center-mode"
+            :visible-slides="6"
+            :gap="3"
+            :dragging-distance="70"
+            :ratio="1 / 8"
+            :arrows-outside="true"
+            :bullets="false"
+            slide-multiple
+          >
+            <vueper-slide
+              v-for="(trending, i) in trendings"
+              :key="i"
+              :title="trending.title"
+            >
+              <template v-slot:content>
+                <Card
+                  :title="trending.title"
+                  :img_src="trending.img_src"
+                  :content="trending.title"
+                />
+              </template>
+            </vueper-slide>
+          </vueper-slides>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -38,7 +44,7 @@ export default {
   components: { VueperSlides, VueperSlide, Card },
   name: "Home",
   data() {
-    return { slides: [] };
+    return { trendings: [] };
   },
   created() {
     const poster_base = "https://image.tmdb.org/t/p/w500";
@@ -49,12 +55,11 @@ export default {
       )
       .then((response) => {
         for (var res in response.data.results) {
-          this.slides.push({
+          this.trendings.push({
             title: response.data.results[res].title,
             img_src: poster_base + response.data.results[res].poster_path,
             content: response.data.results[res].overview,
           });
-          console.log(response.data.results[res]);
         }
       });
   },
@@ -70,6 +75,11 @@ h2 {
   margin-left: 3%;
   color: rgb(232, 230, 227);
 }
+
+.ml-7-6 {
+  margin-left: 7.6%;
+  margin-top: -2%;
+}
 </style>
 
 <style>
@@ -82,11 +92,23 @@ h2 {
 .vueperslide--visible {
   display: flex;
   align-items: center;
+  transition: all 0.1s ease-in;
+}
+
+.vueperslide:hover,
+.vueperslide--visible:hover {
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 .vueperslides__bullets,
 .vueperslides__bullets--outside {
   color: #950740;
+}
+
+.vueperslides--touchable,
+.vueperslides__track {
+  cursor: default !important;
 }
 
 .ex--center-mode {

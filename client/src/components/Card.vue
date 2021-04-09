@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" @click="alert_test()">
     <img
       class="card-img-top"
       :src="img_src"
@@ -16,6 +16,11 @@
 export default {
   name: "Card",
   props: ["title", "img_src", "content"],
+  methods: {
+    alert_test() {
+      alert("this is a test");
+    }
+  }
 };
 </script>
 
@@ -29,5 +34,12 @@ export default {
 .card {
   background-color: inherit;
   color: #bfc0c0;
+  padding: 0.9rem;
+  border: none;
+}
+
+.card-body {
+  padding: 0;
+  margin-top: 1rem;
 }
 </style>
